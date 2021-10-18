@@ -31,7 +31,7 @@ from deeprobust.image.attack import YOPOpgd
 from deeprobust.image.defense.base_defense import BaseDefense
 
 import time
-from tensorboardX import SummaryWriter
+# from tensorboardX import SummaryWriter
 
 class PieceWiseConstantLrSchedulerMaker(object):
 
