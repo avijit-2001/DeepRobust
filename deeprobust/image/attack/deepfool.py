@@ -102,7 +102,7 @@ def deepfool(model, image, num_classes, overshoot, max_iter, device):
         grad_orig = x.grad.data.cpu().numpy().copy()
 
         for k in range(1, num_classes):
-            x.zero_grad()
+#             x.zero_grad()
 
             fs[0, output[k]].backward(retain_graph=True)
             cur_grad = x.grad.data.cpu().numpy().copy()
