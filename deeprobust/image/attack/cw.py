@@ -148,7 +148,7 @@ class CarliniWagner(BaseAttack):
                 img_adv.requires_grad = True
 
                 #output of the layer before softmax
-                output = model.get_logits(img_adv)
+                output = model(img_adv)
 
                 #pending success
                 is_adversarial = self.pending_f(img_adv)
@@ -200,7 +200,7 @@ class CarliniWagner(BaseAttack):
 
         ## get the output of model before softmax
         x_p.requires_grad = True
-        logits = self.model.get_logits(x_p).to(self.device)
+        logits = self.model(x_p).to(self.device)
 
         ## find the largest class except the target class
         targetlabel_mask = (torch.from_numpy(onehot_like(np.zeros(self.classnum), target))).double()
@@ -241,8 +241,8 @@ class CarliniWagner(BaseAttack):
         targetlabel_mask = targetlabel_mask.to(self.device)
         secondlargest_mask = secondlargest_mask.to(self.device)
 
-        Zx_i = np.max((self.model.get_logits(x_p).double().to(self.device) * secondlargest_mask).cpu().detach().numpy())
-        Zx_t = np.max((self.model.get_logits(x_p).double().to(self.device) * targetlabel_mask).cpu().detach().numpy())
+        Zx_i = np.max((self.model(x_p).double().to(self.device) * secondlargest_mask).cpu().detach().numpy())
+        Zx_t = np.max((self.model(x_p).double().to(self.device) * targetlabel_mask).cpu().detach().numpy())
 
         if ( Zx_i - Zx_t  < - self.confidence):
             return True
