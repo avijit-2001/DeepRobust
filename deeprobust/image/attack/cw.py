@@ -177,8 +177,8 @@ class CarliniWagner(BaseAttack):
             else:
                 c = (c_high + c_low) / 2
 
-            if (step % 10 == 0):
-                print("iteration:{:.0f},loss:{:.4f}".format(step,loss))
+#             if (step % 10 == 0):
+#                 print("iteration:{:.0f},loss:{:.4f}".format(step,loss))
 
             # if (step == 50):
             #     learning_rate = learning_rate/100
