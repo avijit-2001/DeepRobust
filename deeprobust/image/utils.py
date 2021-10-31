@@ -209,3 +209,8 @@ def progress_bar(current, total, msg=None):
         sys.stdout.write('\n')
     sys.stdout.flush()
 
+def print_args(args):
+  for arg in vars(args):
+    if arg == 'f':
+      continue
+    print (arg + ": " + (str)(getattr(args, arg)))
