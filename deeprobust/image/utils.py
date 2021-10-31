@@ -214,3 +214,4 @@ def print_args(args):
     if arg == 'f':
       continue
     print (arg + ": " + (str)(getattr(args, arg)))
+    print ("something")
